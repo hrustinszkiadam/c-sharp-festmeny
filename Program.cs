@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.IO;
-
-namespace AukcioProjekt {
+﻿namespace AukcioProjekt {
    internal class Program {
       static void Main(string[] args) {
-         List<Festmeny> festmenyek = [
+         List<Festmeny> festmenyek = new() {
             new Festmeny("Mona Lisa", "Leonardo da Vinci", "Reneszánsz"),
             new Festmeny("A Horatiák esküje", "Jacques-Louis David", "Klasszicizmus"),
-         ];
+         };
          Console.Write("Adj meg egy darabszámot: ");
          int darabszam = int.Parse(Console.ReadLine() ?? "0");
 
@@ -116,7 +110,7 @@ namespace AukcioProjekt {
          Console.WriteLine($"\nNem elkelt festmények száma: {nemElkeltFestmenyekSzama}");
 
          Console.WriteLine("\nFestmények listája rendezve a licitek nagysága alapján:");
-         List<Festmeny> rendezettFestmenyek = [.. festmenyek.OrderByDescending(festmeny => festmeny.LegmagasabbLicit)];
+         List<Festmeny> rendezettFestmenyek = new(festmenyek.OrderByDescending(festmeny => festmeny.LegmagasabbLicit));
          foreach(Festmeny festmeny in rendezettFestmenyek) {
             Console.WriteLine(festmeny);
          }
